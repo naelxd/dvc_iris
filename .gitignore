@@ -1,0 +1,9 @@
+/model.pkl
+/metrics.json
+/metrics.yaml
+.DS_Store
+data/.DS_Store
+env/
+dvc_plots/
+models/
+params.yaml.dvc

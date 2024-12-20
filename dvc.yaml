@@ -1,0 +1,34 @@
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+      - src/preprocess.py
+      - data/iris.csv
+    outs:
+      - data/train.csv
+      - data/test.csv
+
+  train:
+    cmd: python src/train.py
+    deps:
+      - src/train.py
+      - data/train.csv
+      - data/test.csv
+    outs:
+      - models/model_50.pkl
+      - models/model_100.pkl
+      - models/model_150.pkl
+      - models/model_200.pkl
+      - metrics.yaml
+plots:
+  - n_estimators and accuracy:
+      template: simple
+      x: "n_estimators"
+      y:
+        metrics.yaml: accuracy
+  - n_estimators and f1_score:
+      template: simple
+      x: "n_estimators"
+      y:
+        metrics.yaml: f1_score
+
